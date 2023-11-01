@@ -11,7 +11,7 @@ Nous avons opté pour architecture distribuée pour traiter et stocker les donn�
 ## Approche et Outils
 
 ### Données
-- **Source** : L'ensemble de données Amazon Product Review](https://www.kaggle.com/datasets/arhamrumi/amazon-product-reviews/) récupéré depuis Kaggle. Il s'agit d'un ensemble historique d'avis laissés par les utilisateurs d'Amazon.
+- **Source** : L'ensemble de données [Amazon Product Review](https://www.kaggle.com/datasets/arhamrumi/amazon-product-reviews/) récupéré depuis Kaggle. Il s'agit d'un ensemble historique d'avis laissés par les utilisateurs d'Amazon.
 
 ### Traitement des Données
 - **Apache Spark** : Utilisé pour le traitement en lots (Batch Processing) de l'ensemble de données, vu sa grande taille et la nature historique de celui-ci. Spark permet d'extraire efficacement des tendances telles que les produits les plus appréciés et les catégories les plus commentées.
