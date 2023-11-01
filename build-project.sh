@@ -1,11 +1,15 @@
 #!/bin/bash
 
 # Start the docker-compose
+echo "Waiting for the containers to start..."
 docker-compose up -d
+echo "Containers are started."
 
+echo "Copy the Reviews.csv file to the namenode container"
 # Copy the Reviews.csv file to the namenode container
 docker cp ./Reviews.csv project-big-data-dia-diallo-namenode-1:/tmp/
 
+echo "Copy the Spark script and Dash app to the spark-master container"
 # Copy the Spark script and Dash app to the spark-master container 
 docker cp ./spark_processing.py project-big-data-dia-diallo-spark-master-1:/tmp/
 docker cp ./dash_app.py project-big-data-dia-diallo-spark-master-1:/tmp/
@@ -27,11 +31,14 @@ done
 echo "Datanode is connected to namenode."
 
 
-# Install dependencies for Dash in spark master
+echo "Install dependencies for Dash in spark master"
 # To be executed in spark-master
 docker exec -it project-big-data-dia-diallo-spark-master-1 bash -c "
-pip install dash dash-core-components dash-html-components dash-renderer dash-bootstrap-components pandas plotly pyspark findspark
+pip install dash dash-core-components dash-html-components dash-renderer dash-bootstrap-components pandas plotly pyspark findspark textblob
 "
+echo "Dependencies installed"
+
+echo "Execute HDFS commands to prepare the environment for data processing"
 # Connect to the namenode container and execute HDFS commands
 # We need to grant write permisions for the user spark to be able to put the 
 # processed data in the HDFS 
@@ -45,6 +52,10 @@ hdfs dfs -chown spark:spark /results &&
 hdfs dfs -chmod 755 /results
 "
 
+echo "HDFS commands executed"
+
+echo "Execute script for data processing and Dash app"
+
 # Execute script for data processing
 # To be executed in spark-master
 docker exec -it project-big-data-dia-diallo-spark-master-1 /opt/bitnami/spark/bin/spark-submit /tmp/spark_processing.py
@@ -52,3 +63,6 @@ docker exec -it project-big-data-dia-diallo-spark-master-1 /opt/bitnami/spark/bi
 # Execute script for the Dash app
 # To be executed in spark-master
 docker exec -it project-big-data-dia-diallo-spark-master-1 /opt/bitnami/spark/bin/spark-submit /tmp/dash_app.py
+
+echo "Script executed"
+echo "Open your browser and go to http://localhost:8050/ to see the Dash app"
