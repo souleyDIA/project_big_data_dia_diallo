@@ -96,7 +96,7 @@ http://0.0.0.0:8051/
 
 ## Note Importante
 
-Si le datanode n'arrive pas à se connecter au namenode, faudra relancez le script `build-project.sh` en réexécutant au dessus.
+Si le datanode n'arrive pas à se connecter au namenode, faudra relancez le script `build-project.sh` en réexécutant la commande au dessus.
 
 ## Détails d'Installation
 
