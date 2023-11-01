@@ -65,4 +65,4 @@ docker exec -it project-big-data-dia-diallo-spark-master-1 /opt/bitnami/spark/bi
 docker exec -it project-big-data-dia-diallo-spark-master-1 /opt/bitnami/spark/bin/spark-submit /tmp/dash_app.py
 
 echo "Script executed"
-echo "Open your browser and go to http://localhost:8050/ to see the Dash app"
+echo "Open your browser and go to http://0.0.0.0:8051/ to see the Dash app"
