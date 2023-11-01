@@ -39,7 +39,7 @@ Pour répondre à cette problématique, les composants suivants ont été sélec
 - **Docker** : Un outil qui permet de conteneuriser les applications et leurs dépendances pour garantir une installation rapide et sans problème.
 
 ### Docker Compose
-Le fichier `docker-compose` décrit l'infrastructure que vous avez mise en place pour faire fonctionner votre projet :
+Le fichier `docker-compose` décrit l'infrastructure mise en place pour faire fonctionner tout le projet :
 
 - **Namenode & Datanode** : Ces services utilisent l'image Docker `apache/hadoop:3` pour mettre en place un système de fichiers distribué HDFS (Hadoop Distributed File System). Le Namenode stocke la structure du répertoire du fichier et la métadonnée pour tous les fichiers, tandis que le Datanode stocke les données réelles.
 
