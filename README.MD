@@ -115,8 +115,6 @@ Le script a pour but de:
 
 ```bash
 #!/bin/bash
-# ... [le contenu complet de votre script bash ici] ...
-#!/bin/bash
 
 # Start the docker-compose
 docker-compose up -d
